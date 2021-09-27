@@ -1,0 +1,22 @@
+@mixin main_font {
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+@mixin unselectable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+@mixin focusable_field {
+    border: 2px solid rgb(0, 162, 255);
+    box-shadow: 0 0 2px 0 rgb(0, 162, 255);
+    border-radius: 2px;
+}
+
+
+$COLOR_BC: rgb(245, 245, 245);

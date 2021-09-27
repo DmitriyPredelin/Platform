@@ -1,0 +1,135 @@
+.main-menu {
+    display: flex;
+    border-bottom: 3px solid gray;
+
+    .menu-panel {
+        display: flex;
+        flex-direction: row;
+        min-width: 150px;
+        flex-grow: 0;
+
+        &.long {
+            flex-grow: 1;
+        }
+
+        .menu-panel__main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+
+            .menu-panel__children {
+                display: flex;
+                flex-direction: row;
+                margin: 0 auto;
+            }
+
+            .menu-panel_group {
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+
+                .menu-panel__children {
+                    display: flex;
+                    flex-direction: row;
+                    margin: 0 auto;
+
+                    .btn {
+                        overflow: hidden;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+
+            .menu-panel__name-panel {
+                background-color: rgb(214, 213, 213);
+                align-self: flex-end;
+                height: 22px;
+                width: 100%;
+                text-align: center;
+                //padding: 0px 10px;
+                @include main_font;
+                box-sizing: border-box;
+                margin-top: 3px;
+                align-self: flex-end;
+
+                .name-panel__name {
+                    padding: 3px;
+                }
+            }
+        }
+
+        .manu-panel__delimeter {
+            height: 100%;
+            width: 2px;
+            border-radius: 50%;
+            background-color: rgb(214, 213, 213);
+        }
+    }
+
+    .text {
+        @include main_font;
+        color: black;
+        line-height: normal;
+    }
+}
+
+.overlay-dropdown {
+    height: 200px;
+    font-size: 14px;
+    background-color: $COLOR_BC;
+    border : 1px solid black;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 12;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    min-width: 250px;
+    
+    .menu-item {
+        font-family: Roboto;
+        font-size: 14px;
+        height: 27px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        @include unselectable();
+        
+        padding : 0px 3px;
+        border: 2px solid $COLOR_BC;
+
+        &:hover {
+            background-color: $COLOR_BC;
+            border: 2px solid #ffb74d;
+            border-radius: 5px;
+        }
+
+        .icon {
+            width: 25px;
+            color : #0277bd;
+        }
+
+        .divider {
+            height: 100%;
+            //border-radius: 30%;
+            width: 1px;
+            background-color: rgb(199, 194, 194);
+            margin-right: 7px;
+            opacity: 0.5;
+        }
+
+        .name {
+            flex-grow: 1;
+        }
+
+        .arrow_more {
+            flex-grow: 0;
+            font-size: 12px;
+            color: rgb(104, 100, 100);
+        }
+
+        
+    }
+}

@@ -1,0 +1,130 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+
+@import "./mixins.scss";
+@import "./variables.scss";
+@import "./editWindow.scss";
+@import "./tree.scss";
+@import "./resizer.scss";
+@import "./contextMenu.scss";
+@import "./mainmenu.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+  font-size: 16px;
+}
+
+.container {
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2px;
+
+  .main-field {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    height: 100%;
+
+    .sidebar {
+      width: 20%;
+      height: 100%;
+      overflow: scroll;
+      min-width: 200px;
+      padding-left: 10px;
+    }
+
+    .observer-area {
+      width: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
+      overflow-x: hidden;
+
+      .object-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0px 0px;
+        table-layout: auto;
+
+        .table-header {
+          background-color: $HEADER_COLOR;
+          font-size: 15px;
+          height: 30px;
+          text-decoration: none;
+          font-weight: normal;
+          text-align: center;
+          position: relative;
+          margin-right: 10px;
+
+          .table-header__sort-icon {
+            font-size: 16px;
+            cursor: pointer;
+            transition: all ease 0.5s;
+            right: 0;
+
+            position: absolute;
+
+            &.turn {
+              transform: rotate(180deg);
+              transition: all ease 0.5s;
+            }
+          }
+        }
+
+        .table-row {
+          border: 1px solid lightgray;
+          cursor: pointer;
+          @include unselectable;
+
+          &:hover {
+            background-color: #e1f5fe;
+          }
+
+          .table-cell {
+            padding: 5px;
+          }
+
+          .table-cell__empty {
+            background-color: lightgray;
+          }
+
+          &.selected {
+            background-color: $COLOR_SELECT_ELEM;
+          }
+
+          .edit-input {
+            width: 90%;
+
+            &:focus {
+              border: 2px solid rgb(6, 80, 122);
+              box-shadow: 0 0 2px 0 rgb(0, 162, 255);
+              border-radius: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.window__name-panel {
+  width: 100%;
+  height: 30px;
+  background-color: #ede7f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .close_button {
+    background-color: #ede7f6;
+    border: none;
+    height: 100%;
+
+    &:hover {
+      background-color: #ff4d4f;
+    }
+  }
+}

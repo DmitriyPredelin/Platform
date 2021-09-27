@@ -1,0 +1,45 @@
+.resizer {
+    width: 5px;
+    background: lightgray;
+    position: relative;
+    cursor: col-resize;
+    flex-shrink: 0;
+    @include unselectable;
+
+    &::after {
+        content: "";
+        border-left: 5px solid gray;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-100%);
+        right: 0;
+        display: inline-block;
+        height: 40px;
+        border-radius: 30%;
+    }
+}
+
+.resizer_td {
+    width: 4px;
+    background: #ddc8fd;
+    position: relative;
+    cursor: col-resize;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    @include unselectable;
+    &::after,
+    &::before {
+        content: "";
+        border-left: 1px solid gray;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        height: 100%;
+    }
+
+    &::before {
+        left: 0;
+    }
+}
