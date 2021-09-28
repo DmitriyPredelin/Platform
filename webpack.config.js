@@ -2,10 +2,34 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: {
+    main: "./src/index.tsx",
+  },
+
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
+  },
+  optimization: {
+    runtimeChunk: "single",
+    splitChunks: {
+      chunks: "all",
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // получает имя node_modules/packageName
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
+
+            return `pckg.${packageName.replace("@", "")}`;
+          },
+        },
+      },
+    },
   },
   devtool: "inline-source-map",
   devServer: {
@@ -18,8 +42,8 @@ module.exports = {
       src: path.resolve(__dirname, "src"),
       mock: path.resolve(__dirname, "src/mock"),
       styles: path.resolve(__dirname, "src/styles"),
-      common : path.resolve(__dirname, "src/common"),
-      hooks : path.resolve(__dirname, "src/hooks"),
+      common: path.resolve(__dirname, "src/common"),
+      hooks: path.resolve(__dirname, "src/hooks"),
     },
     extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
   },
